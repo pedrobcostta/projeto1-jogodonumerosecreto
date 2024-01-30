@@ -11,6 +11,7 @@ function gerarNumeroAleatorio () {
     return parseInt(Math.random() *10 + 1);
 }
 let tentativas = 1;
+document.getElementById('verificar').removeAttribute('disabled');
 
 // Valores do titulo e paragrafo
 function valor (tag, texto){
@@ -34,6 +35,7 @@ function verificarChute() {
         let mensagemTentativas = `Você descobriu o numero secreto com ${tentativas} ${palavraTentativas}`;
         valor('h1', 'Você descobriu o numero secreto');
         valor('p', mensagemTentativas);
+        document.getElementById('verificar').setAttribute('disabled', true);
         document.getElementById('reiniciarJogo').removeAttribute('disabled');
     } else {
         if (chute > numeroSecreto) {
@@ -52,6 +54,7 @@ function botaoReiniciarJogo() {
     tentativas = 1;
     exibirMensagemInicial();
     document.getElementById('reiniciarJogo').setAttribute('disabled', true);
+    document.getElementById('verificar').removeAttribute('disabled');
 }
 function limparCampo(){
     chute = document.querySelector('input');
